@@ -1,0 +1,11 @@
+with open("raw_subtitle.txt", mode="r", encoding="utf8") as sub_file:
+    ex_subtitle = sub_file.read()
+
+import re
+
+find_stacked = "([^\n])\n(\d+)\n(\d)"
+replace_stacked = "\\1\n\n\\2\n\\3"
+
+with open("new_sub.txt", mode="w", encoding="utf8") as new_sub_file:
+    modified_sub = re.sub(find_stacked, replace_stacked, ex_subtitle)
+    new_sub_file.write(modified_sub)
